@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [];
+        const odds = arr.filter((num) => num % 2 !== 0);
+        const sumOdd = odds.reduce((prev, current) => prev + current);
+        const minOdd = Math.min(...odds);
+        answer.push(sumOdd, minOdd);
+        return answer;
+      }
+
+      function solution2(arr) {
+        let answer = [];
+        let sum = 0,
+          min = Number.MAX_SAFE_INTEGER;
+
+        for (let x of arr) {
+          if (x % 2 === 1) {
+            sum += x;
+            if (x < min) min = x;
+          }
+        }
+        answer.push(sum, min);
+        return answer;
+      }
+
+      const arr = [12, 77, 38, 41, 53, 92, 85];
+      console.log(solution2(arr));
+    </script>
+  </body>
+</html>
