@@ -9,14 +9,16 @@
   <body>
     <script>
       function solution(dwarfs) {
-        let answer = dwarfs;
+        let answer = [...dwarfs];
         const totalHeights = dwarfs.reduce((prev, cur) => prev + cur);
         const enemyHeight = totalHeights - 100;
-        for (let i = 0; i < dwarfs.length - 1; i++) {
-          for (let j = i + 1; j < dwarfs.length; j++) {
+        outerLoop: for (let i = 0; i < dwarfs.length - 1; i++) {
+          innerLoop: for (let j = i + 1; j < dwarfs.length; j++) {
+            console.log(dwarfs[i], dwarfs[j]);
             if (enemyHeight - dwarfs[i] - dwarfs[j] === 0) {
               answer.splice(j, 1);
               answer.splice(i, 1);
+              break outerLoop;
             }
           }
         }
