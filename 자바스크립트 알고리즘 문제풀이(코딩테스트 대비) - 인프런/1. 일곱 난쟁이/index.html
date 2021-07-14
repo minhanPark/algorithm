@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(dwarfs) {
+        let answer = dwarfs;
+        const totalHeights = dwarfs.reduce((prev, cur) => prev + cur);
+        const enemyHeight = totalHeights - 100;
+        for (let i = 0; i < dwarfs.length - 1; i++) {
+          for (let j = i + 1; j < dwarfs.length; j++) {
+            if (enemyHeight - dwarfs[i] - dwarfs[j] === 0) {
+              answer.splice(j, 1);
+              answer.splice(i, 1);
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      const dwarfs = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      console.log(solution(dwarfs));
+    </script>
+  </body>
+</html>
