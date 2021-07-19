@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = "";
+        const startIndex = parseInt(str.length / 2) - 1;
+        if (str.length % 2 === 0) {
+          answer = str.substr(startIndex, 2);
+        } else {
+          answer = str.substr(startIndex, 1);
+        }
+
+        return answer;
+      }
+
+      const str = "study";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
