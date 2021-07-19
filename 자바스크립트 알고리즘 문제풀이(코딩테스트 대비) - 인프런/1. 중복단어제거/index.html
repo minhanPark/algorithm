@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(lists) {
+        let answer = [];
+
+        for (let list of lists) {
+          if (!answer.includes(list)) answer.push(list);
+        }
+        return answer;
+      }
+
+      function solution2(lists) {
+        let answer;
+
+        answer = lists.filter((v, i) => lists.indexOf(v) === i);
+        return answer;
+      }
+
+      const arr = [
+        "good",
+        "time",
+        "good",
+        "time",
+        "student",
+        "hello",
+        "student",
+      ];
+      console.log(solution2(arr));
+    </script>
+  </body>
+</html>
