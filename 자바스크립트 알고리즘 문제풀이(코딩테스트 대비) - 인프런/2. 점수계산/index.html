@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(scoreSheet) {
+        let answer = 0;
+        let extraPoint = 0;
+
+        for (let i = 0; i < scoreSheet.length; i++) {
+          if (scoreSheet[i] === 1) {
+            answer += extraPoint + 1;
+            extraPoint += 1;
+          } else {
+            extraPoint = 0;
+          }
+        }
+
+        return answer;
+      }
+
+      function solution2(scoreSheet) {
+        let answer = 0;
+        let extraPoint = 0;
+
+        for (let score of scoreSheet) {
+          if (score === 1) answer += ++extraPoint;
+          else extraPoint = 0;
+        }
+
+        return answer;
+      }
+      const scoreSheet = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+      console.log(solution2(scoreSheet));
+    </script>
+  </body>
+</html>
