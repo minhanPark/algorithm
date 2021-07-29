@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(scoreSheet) {
+        let answer = [];
+        let rank = 1;
+        for (let i = 0; i < scoreSheet.length; i++) {
+          for (let j = 0; j < scoreSheet.length; j++) {
+            if (i === j) continue;
+            if (scoreSheet[i] < scoreSheet[j]) rank++;
+          }
+          answer.push(rank);
+          rank = 1;
+        }
+
+        return answer;
+      }
+
+      function solution2(scoreSheet) {
+        let n = scoreSheet.length;
+        let answer = Array.from({ length: n }, () => 1);
+        for (let i = 0; i < n; i++) {
+          for (j = 0; j < n; j++) {
+            if (scoreSheet[i] < scoreSheet[j]) answer[i]++;
+          }
+        }
+        return answer;
+      }
+
+      const scoreSheet = [87, 89, 92, 100, 76];
+      console.log(solution(scoreSheet));
+    </script>
+  </body>
+</html>
