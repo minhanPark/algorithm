@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(grid) {
+        let answer = 0;
+        let total = 0;
+
+        for (let i = 0; i < grid.length; i++) {
+          // 각 행의 합 비교
+          for (let j = 0; j < grid.length; j++) {
+            total += grid[i][j];
+          }
+          if (total > answer) answer = total;
+          total = 0;
+        }
+
+        for (let i = 0; i < grid.length; i++) {
+          // 각 열의 합 비교
+          for (let j = 0; j < grid.length; j++) {
+            total += grid[j][i];
+          }
+          if (total > answer) answer = total;
+          total = 0;
+        }
+
+        for (let i = 0; i < grid.length; i++) {
+          //좌에서 우로가는 대각선
+          total += grid[i][i];
+        }
+        if (total > answer) answer = total;
+        total = 0;
+
+        for (let i = 0; i < grid.length; i++) {
+          total += grid[i][4 - i];
+        }
+        if (total > answer) answer = total;
+        return answer;
+      }
+
+      function solution2(grid) {
+        let answer = Number.MIN_SAFE_INTEGER;
+        const n = grid.length;
+        let sum1 = 0;
+        let sum2 = 0;
+
+        for (let i = 0; i < n; i++) {
+          sum1 = sum2 = 0;
+          for (let j = 0; j < n; j++) {
+            sum1 += grid[i][j];
+            sum2 += grid[j][i];
+          }
+          answer = Math.max(answer, sum1, sum2);
+        }
+        sum1 = sum2 = 0;
+        for (let i = 0; i < n; i++) {
+          sum1 += grid[i][i];
+          sum2 += grid[i][4 - i];
+        }
+        answer = Math.max(answer, sum1, sum2);
+        return answer;
+      }
+
+      const grid = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      console.log(solution2(grid));
+    </script>
+  </body>
+</html>
