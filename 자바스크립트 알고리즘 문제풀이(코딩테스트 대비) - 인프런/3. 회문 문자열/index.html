@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = "YES";
+        const lowerString = str.toLowerCase();
+        const length = parseInt(lowerString.length / 2);
+        for (let i = 0; i < length; i++) {
+          if (lowerString[i] !== lowerString[lowerString.length - 1 - i]) {
+            answer = "NO";
+            break;
+          }
+        }
+        return answer;
+      }
+      function solution2(str) {
+        let answer = "YES";
+        const lowerCase = str.toLowerCase();
+        const reversedStr = lowerCase.split("").reverse().join("");
+        if (lowerCase !== reversedStr) {
+          return "NO";
+        }
+        return answer;
+      }
+      const str = "goood";
+      console.log(solution2(str));
+    </script>
+  </body>
+</html>
