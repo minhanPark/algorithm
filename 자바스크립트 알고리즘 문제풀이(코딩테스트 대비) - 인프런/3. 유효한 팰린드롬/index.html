@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = "YES";
+        const regex = /[^a-z]/g;
+        const onlyStr = str.toLowerCase().replace(regex, "");
+        const length = onlyStr.length;
+        for (let i = 0; i < parseInt(length / 2); i++) {
+          if (onlyStr[i] !== onlyStr[length - 1 - i]) return "NO";
+        }
+
+        return answer;
+      }
+
+      function solution2(str) {
+        let answer = "YES";
+        str = str.toLowerCase().replace(/[^a-z]/g, "");
+        if (str.split("").reverse().join("") !== str) return "NO";
+
+        return answer;
+      }
+
+      const str = "7found7, time: study; Yduts; emit, 7Dnuof";
+      console.log(solution2(str));
+    </script>
+  </body>
+</html>
