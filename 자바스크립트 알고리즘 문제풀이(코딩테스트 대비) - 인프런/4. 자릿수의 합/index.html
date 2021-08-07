@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(nums) {
+        let answer = Number.MIN_SAFE_INTEGER;
+        let total = 0;
+
+        for (let num of nums) {
+          let sum = String(num)
+            .split("")
+            .reduce((arr, val) => arr + Number(val), 0);
+          if (sum > total) {
+            answer = num;
+            total = sum;
+          }
+          if (sum === total) {
+            answer = Math.max(answer, num);
+          }
+        }
+
+        return answer;
+      }
+
+      function solution2(nums) {
+        let answer,
+          max = Number.MIN_SAFE_INTEGER;
+        for (let x of nums) {
+          let sum = 0,
+            tmp = x;
+          while (tmp) {
+            sum += tmp % 10;
+            tmp = Math.floor(tmp / 10);
+          }
+          if (sum > max) {
+            max = sum;
+            answer = x;
+          }
+          if (sum === max) {
+            if (x > answer) answer = x;
+          }
+        }
+      }
+
+      const nums = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(nums));
+    </script>
+  </body>
+</html>
