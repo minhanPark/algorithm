@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(sheets) {
+        let answer = 0;
+        const students = sheets[0].length,
+          tests = sheets.length;
+
+        for (let i = 1; i <= 4; i++) {
+          menteeLoop: for (let j = 1; j <= 4; j++) {
+            let temp = 0;
+            for (let k = 0; k < tests; k++) {
+              let mentor = 0;
+              mentee = 0;
+              for (let s = 0; s < students; s++) {
+                if (sheets[k][s] === i) mentor = s;
+                if (sheets[k][s] === j) mentee = s;
+              }
+              if (mentor >= mentee) {
+                continue menteeLoop;
+              } else {
+                temp++;
+              }
+            }
+            if (temp === tests) {
+              answer++;
+              console.log(i, j);
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      const rankSheets = [
+        [3, 4, 1, 2],
+        [4, 3, 2, 1],
+        [3, 1, 4, 2],
+      ];
+      console.log(solution(rankSheets));
+    </script>
+  </body>
+</html>
