@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(budget, sheets) {
+        let answer = 0;
+        let studentLength = sheets.length;
+        sheets.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+        for (let i = 0; i < studentLength; i++) {
+          let rest = budget - sheets[i][0] / 2 - sheets[i][1];
+          let cnt = 1;
+          for (let j = 0; j < studentLength; j++) {
+            if (i === j) continue;
+            if (sheets[j][0] + sheets[j][1] <= rest) {
+              rest -= sheets[j][0] + sheets[j][1];
+              cnt += 1;
+            } else {
+              break;
+            }
+          }
+          answer = Math.max(answer, cnt);
+        }
+
+        return answer;
+      }
+
+      const presentSheets = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(solution(28, presentSheets));
+    </script>
+  </body>
+</html>
