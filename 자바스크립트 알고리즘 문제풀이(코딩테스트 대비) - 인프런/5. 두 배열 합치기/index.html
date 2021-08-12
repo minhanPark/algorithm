@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(left, right) {
+        let answer = [];
+
+        while (left.length !== 0 || right.length !== 0) {
+          if (left[0] <= right[0]) {
+            answer.push(left.shift());
+          } else {
+            answer.push(right.shift());
+          }
+        }
+
+        return answer;
+      }
+
+      function solution2(left, right) {
+        let answer = [];
+        let n = left.length;
+        let m = right.length;
+        let p1 = (p2 = 0);
+        while (p1 < n && p2 < m) {
+          if (left[p1] <= right[p2]) answer.push(left[p1++]);
+          else answer.push(right[p2++]);
+        }
+        while (p1 < n) {
+          answer.push(left[p1++]);
+        }
+        while (p2 < m) {
+          answer.push(left[p2++]);
+        }
+
+        return answer;
+      }
+
+      console.log(solution([1, 3, 5], [2, 3, 6, 7, 9]));
+    </script>
+  </body>
+</html>
