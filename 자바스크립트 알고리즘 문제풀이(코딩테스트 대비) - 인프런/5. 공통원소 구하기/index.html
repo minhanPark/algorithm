@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(leftArr, rightArr) {
+        let answer = [];
+        leftArr.sort((a, b) => a - b);
+        rightArr.sort((a, b) => a - b);
+        const leftLength = leftArr.length;
+        const rightLength = rightArr.length;
+        let p1 = (p2 = 0);
+
+        while (p1 < leftLength && p2 < rightLength) {
+          if (leftArr[p1] === rightArr[p2]) {
+            answer.push(leftArr[p1++]);
+            p2++;
+          } else if (leftArr[p1] > rightArr[p2]) {
+            p2++;
+          } else {
+            p1++;
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]));
+    </script>
+  </body>
+</html>
