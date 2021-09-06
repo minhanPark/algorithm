@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(amount, days) {
+        let answer = 0;
+        for (let i = 0; i < amount.length - days + 1; i++) {
+          let count = 0;
+          let sum = 0;
+          while (count < days) {
+            sum += amount[i + count];
+            count++;
+          }
+          answer = Math.max(answer, sum);
+          count = 0;
+        }
+
+        return answer;
+      }
+
+      function solution2(amount, days) {
+        let answer,
+          sum = 0;
+        for (let i = 0; i < k; i++) {
+          sum += arr[i];
+        }
+        answer = sum;
+        for (let i = k; i < arr.length; i++) {
+          sum += arr[i] - arr[i - k];
+          answer = Math.max(answer, sum);
+        }
+
+        answer = sum;
+      }
+
+      const amount = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      console.log(solution(amount, 3));
+    </script>
+  </body>
+</html>
