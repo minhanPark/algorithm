@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(votes) {
+        let answer,
+          vote = 0;
+        votes = votes.split("");
+        const organized = votes.reduce((acc, value) => {
+          if (acc.hasOwnProperty(value)) {
+            acc[value] = acc[value] + 1;
+          } else {
+            acc[value] = 1;
+          }
+          return acc;
+        }, {});
+
+        for (let key in organized) {
+          if (organized[key] > vote) {
+            vote = organized[key];
+            answer = key;
+          }
+        }
+
+        return answer;
+      }
+
+      function solution2(votes) {
+        let answer;
+        let sH = new Map();
+        for (let vote of votes) {
+          if (sH.has(vote)) {
+            sH.set(vote, sH.get(vote) + 1);
+          } else {
+            sH.set(vote, 1);
+          }
+        }
+
+        let max = Number.MIN_SAFE_INTEGER;
+        for (let [key, val] of sH) {
+          if (val > max) {
+            max = val;
+            answer = key;
+          }
+        }
+
+        return answer;
+      }
+
+      const votes = "BACBACCACCBDEDE";
+      console.log(solution(votes));
+    </script>
+  </body>
+</html>
