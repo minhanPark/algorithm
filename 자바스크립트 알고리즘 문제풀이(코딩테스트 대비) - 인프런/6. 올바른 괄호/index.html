@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(brackets) {
+        let answer = "YES";
+        const tempArr = [];
+
+        for (let bracket of brackets) {
+          if (bracket === "(") {
+            tempArr.push(bracket);
+          } else {
+            const value = tempArr.pop();
+            if (value === undefined) return "NO";
+          }
+        }
+        if (tempArr.length !== 0) return "NO";
+        return answer;
+      }
+
+      const brackets = "(()(()))(())";
+      console.log(solution(brackets));
+    </script>
+  </body>
+</html>
