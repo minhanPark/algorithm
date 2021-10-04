@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(boards, moves) {
+        let answer = 0;
+        const bascket = [];
+        const length = boards.length;
+
+        for (let move of moves) {
+          // move = 1
+          let reach = 0;
+          // reach = 1;
+          while (reach < length) {
+            const doll = boards[reach][move - 1];
+            if (doll !== 0) {
+              if (bascket[bascket.length - 1] === doll) {
+                bascket.pop();
+                answer += 2;
+              } else {
+                bascket.push(doll);
+              }
+              console.log(bascket);
+              boards[reach][move - 1] = 0;
+              break;
+            }
+            reach++;
+          }
+        }
+
+        return answer;
+      }
+
+      function solution2(boards, moves) {
+        let answer = 0;
+        let stack = [];
+
+        moves.forEach((pos) => {
+          for (let i = 0; i < boards.length; i++) {
+            if (boards[i][pos - 1] !== 0) {
+              let temp = boards[i][pos - 1];
+              boards[i][pos - 1] = 0;
+              if (tmp === stack[stack.length - 1]) {
+                stack.pop();
+                answer += 2;
+              } else stack.push(tmp);
+              break;
+            }
+          }
+        });
+        return answer;
+      }
+
+      const boards = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 3],
+        [0, 2, 5, 0, 1],
+        [4, 2, 4, 4, 2],
+        [3, 5, 1, 3, 1],
+      ];
+      const moves = [1, 5, 3, 5, 1, 2, 1, 4];
+      console.log(solution(boards, moves));
+    </script>
+  </body>
+</html>
