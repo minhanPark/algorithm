@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(princes, k) {
+        let answer;
+        let princesArr = Array.from({ length: princes }, (v, i) => i + 1);
+        let tarketNum = 1;
+
+        while (princesArr.length >= 2) {
+          if (tarketNum === k) {
+            princesArr.shift();
+            tarketNum = 1;
+          }
+          const prince = princesArr.shift();
+          princesArr.push(prince);
+          tarketNum++;
+        }
+
+        answer = princesArr[0];
+        return answer;
+      }
+
+      function solution2(n, k) {
+        let answer;
+        let queue = Array.from({ length: princes }, (v, i) => i + 1);
+        while (queue.length) {
+          for (let i = 1; i < k; i++) queue.push(queue.shift());
+          queue.shift();
+          if (queue.length === 1) answer = queue.shift();
+        }
+
+        return answer;
+      }
+
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>
