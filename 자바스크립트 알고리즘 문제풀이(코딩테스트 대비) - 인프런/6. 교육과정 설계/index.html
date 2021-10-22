@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(required, curriculum) {
+        let answer = "YES";
+        const requiredArr = required.split("");
+        for (let c of curriculum) {
+          if (!requiredArr.includes(c)) continue;
+          if (requiredArr.shift() !== c) return "NO";
+        }
+
+        if (requiredArr.length !== 0) return "NO";
+
+        return answer;
+      }
+
+      const curriculum = "CBDAGE";
+      console.log(solution("CBA", curriculum));
+    </script>
+  </body>
+</html>
