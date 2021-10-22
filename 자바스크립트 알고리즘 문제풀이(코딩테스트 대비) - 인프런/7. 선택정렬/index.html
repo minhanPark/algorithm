@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(nums) {
+        let answer = [...nums];
+
+        for (let i = 0; i < answer.length; i++) {
+          let minNumIndex = i;
+          for (let j = i + 1; j < answer.length; j++) {
+            if (answer[j] < answer[minNumIndex]) {
+              minNumIndex = j;
+            }
+          }
+          let temp = answer[i];
+          answer[i] = answer[minNumIndex];
+          answer[minNumIndex] = temp;
+          // [answer[i], answer[minNumIndex]] = [answer[minNumIndex], answer[i]]
+        }
+
+        return answer;
+      }
+
+      const nums = [13, 5, 11, 7, 23, 15];
+      console.log(solution(nums));
+    </script>
+  </body>
+</html>
