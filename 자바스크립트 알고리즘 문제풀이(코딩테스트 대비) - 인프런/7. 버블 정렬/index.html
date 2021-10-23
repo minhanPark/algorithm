@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(nums) {
+        let answer = [...nums];
+        let lastLen = answer.length;
+
+        while (lastLen > 1) {
+          for (let i = 0; i < lastLen - 1; i++) {
+            if (answer[i] > answer[i + 1]) {
+              [answer[i], answer[i + 1]] = [answer[i + 1], answer[i]];
+            }
+          }
+          lastLen--;
+        }
+
+        return answer;
+      }
+
+      const nums = [13, 5, 11, 7, 23, 15];
+      console.log(solution(nums));
+    </script>
+  </body>
+</html>
