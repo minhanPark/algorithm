@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(nums) {
+        let answer = [];
+        let negative = [];
+        let positive = [];
+
+        for (let num of nums) {
+          if (num > 0) positive.push(num);
+          else negative.push(num);
+        }
+
+        answer = [...negative, ...positive];
+        return answer;
+      }
+
+      function solution2(nums) {
+        let answer = [];
+        for (let i = 0; i < nums.length - 1; i++) {
+          for (let j = 0; j < nums.length - i - 1; j++) {
+            if (nums[j] > 0 && nums[j + 1] < 0) {
+              [nums[j + 1], nums[j]] = [nums[j], nums[j + 1]];
+            }
+          }
+        }
+
+        answer = [...nums];
+
+        return answer;
+      }
+
+      const nums = [1, 2, 3, -3, -2, 5, 6, -6];
+      console.log(solution2(nums));
+    </script>
+  </body>
+</html>
