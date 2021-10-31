@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(maxLen, nums) {
+        let answer = [];
+        for (let cash of nums) {
+          for (let i = 0; i < answer.length; i++) {
+            if (answer[i] === cash) {
+              answer.splice(i, 1);
+              break;
+            }
+          }
+          answer.unshift(cash);
+          if (answer.length > maxLen) answer.pop();
+        }
+
+        return answer;
+      }
+
+      const nums = [1, 2, 3, 2, 6, 2, 3, 5, 7];
+      console.log(solution(5, nums));
+    </script>
+  </body>
+</html>
