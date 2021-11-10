@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(decimal) {
+        let answer = "";
+        function recursion(num) {
+          if (num === 0) {
+            return;
+          } else {
+            recursion(parseInt(num / 2));
+            answer += num % 2;
+          }
+        }
+        recursion(decimal);
+        return answer;
+      }
+
+      const num = 11;
+      // 5, 1 // 2, 1 // 1, 0
+      console.log(solution(num));
+    </script>
+  </body>
+</html>
