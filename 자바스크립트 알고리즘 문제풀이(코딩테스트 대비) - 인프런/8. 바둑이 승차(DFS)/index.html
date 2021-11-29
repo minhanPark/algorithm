@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문제풀이</title>
+  </head>
+  <body>
+    <script>
+      function solution(c, dogs) {
+        let answer = 0;
+        let n = dogs.length;
+        function DFS(level, sum) {
+          if (level === n) {
+            if (sum <= c) {
+              answer = Math.max(answer, sum);
+            }
+          } else {
+            DFS(level + 1, sum + dogs[level]);
+            DFS(level + 1, sum);
+          }
+        }
+        DFS(0, 0);
+
+        return answer;
+      }
+
+      console.log(solution(259, [81, 58, 42, 33, 61]));
+    </script>
+  </body>
+</html>
